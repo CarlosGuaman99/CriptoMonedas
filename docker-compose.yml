@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  crypto-tracker:
+    build: .
+    container_name: crypto-tracker-app
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    networks:
+      - crypto-network
+
+networks:
+  crypto-network:
+    driver: bridge

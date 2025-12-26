@@ -1,75 +1,241 @@
-<header>
+# 🪙 Crypto Tracker - Seguimiento de Criptomonedas
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+Una aplicación web moderna para el seguimiento en tiempo real de las principales criptomonedas, con soporte offline y diseño responsivo.
 
-# Communicate using Markdown
+## 🌟 Características
 
-_Organize ideas and collaborate using Markdown, a lightweight language for text formatting._
+- **Datos en Tiempo Real**: Obtiene precios actualizados de las principales criptomonedas usando la API de CoinGecko
+- **Actualización Automática**: Refresco automático de datos cada minuto
+- **Modo Offline**: Funciona sin conexión gracias a Service Workers que cachean los datos
+- **Diseño Responsivo**: Interfaz adaptable a móviles, tablets y escritorio
+- **Información Detallada**: Muestra precio actual, cambio en 24h, capitalización de mercado, volumen y rangos de precio
 
-</header>
+## 📋 Criptomonedas Incluidas
 
-<!--
-  <<< Author notes: Course start >>>
-  Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
--->
+- Bitcoin (BTC)
+- Ethereum (ETH)
+- Cardano (ADA)
+- Binance Coin (BNB)
+- Solana (SOL)
+- Ripple (XRP)
 
-## Welcome
+## 🚀 Instalación y Ejecución
 
-GitHub is about more than code. It’s a platform for software collaboration, and Markdown is one of the most important ways developers can make their communication clear and organized in issues and pull requests. This course will walk you through creating and using headings more effectively, organizing thoughts in bulleted lists, and showing how much work you’ve completed with checklists. You can even use Markdown to add some depth to your work with the help of emoji, images, and links.
+### Opción 1: Ejecución Local Simple
 
-- **Who is this for**: New developers, new GitHub users, and students.
-- **What you'll learn**: Use Markdown to add lists, images, and links in a comment or text file.
-- **What you'll build**: We'll update a plain text file and add Markdown formatting, and you can use this file to start your own GitHub Pages site.
-- **Prerequisites**: In this course you will work with pull requests as well as edit files. If these things aren't familiar to you, we recommend you take the [Introduction to GitHub](https://github.com/skills/introduction-to-github) course, first!
-- **How long**: This course takes less than one hour to complete.
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/CarlosGuaman99/CriptoMonedas.git
+   cd CriptoMonedas
+   ```
 
-In this course, you will:
+2. **Servir la aplicación**:
+   
+   Con Python 3:
+   ```bash
+   python -m http.server 8000
+   ```
+   
+   Con Python 2:
+   ```bash
+   python -m SimpleHTTPServer 8000
+   ```
+   
+   Con Node.js (si tienes `http-server` instalado):
+   ```bash
+   npx http-server -p 8000
+   ```
 
-1. Add headers
-2. Add an image
-3. Add a code example
-4. Make a task list
-5. Merge your pull request
+3. **Abrir en el navegador**:
+   ```
+   http://localhost:8000
+   ```
 
-### How to start this course
+### Opción 2: GitHub Pages
 
-<!-- For start course, run in JavaScript:
-'https://github.com/new?' + new URLSearchParams({
-  template_owner: 'skills',
-  template_name: 'communicate-using-markdown',
-  owner: '@me',
-  name: 'skills-communicate-using-markdown',
-  description: 'My clone repository',
-  visibility: 'public',
-}).toString()
--->
+Esta aplicación puede desplegarse fácilmente en GitHub Pages:
 
-[![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?template_owner=skills&template_name=communicate-using-markdown&owner=%40me&name=skills-communicate-using-markdown&description=My+clone+repository&visibility=public)
+1. **Ir a la configuración del repositorio**:
+   - Navega a `Settings` > `Pages`
 
-1. Right-click **Start course** and open the link in a new tab.
-2. In the new tab, most of the prompts will automatically fill in for you.
-   - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   - Scroll down and click the **Create repository** button at the bottom of the form.
-3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
+2. **Configurar la fuente**:
+   - En "Source", selecciona la rama `main` (o la rama que desees)
+   - Selecciona la carpeta `/ (root)`
+   - Haz clic en "Save"
 
-<footer>
+3. **Acceder a la aplicación**:
+   - Una vez desplegado, tu aplicación estará disponible en:
+   ```
+   https://carlosguaman99.github.io/CriptoMonedas/
+   ```
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+### Opción 3: Docker
+
+#### Construir y ejecutar con Docker
+
+1. **Construir la imagen**:
+   ```bash
+   docker build -t crypto-tracker .
+   ```
+
+2. **Ejecutar el contenedor**:
+   ```bash
+   docker run -d -p 8080:80 --name crypto-tracker-app crypto-tracker
+   ```
+
+3. **Acceder a la aplicación**:
+   ```
+   http://localhost:8080
+   ```
+
+4. **Detener el contenedor**:
+   ```bash
+   docker stop crypto-tracker-app
+   ```
+
+5. **Eliminar el contenedor**:
+   ```bash
+   docker rm crypto-tracker-app
+   ```
+
+#### Docker Compose
+
+También puedes usar Docker Compose:
+
+```bash
+docker-compose up -d
+```
+
+Para detener:
+```bash
+docker-compose down
+```
+
+## 🔧 Tecnologías Utilizadas
+
+- **HTML5**: Estructura semántica de la aplicación
+- **CSS3**: Estilos modernos con variables CSS y diseño responsivo
+- **JavaScript (ES6+)**: Lógica de la aplicación, consumo de API y manejo del estado
+- **Service Workers**: Implementación de funcionalidad offline y caché
+- **CoinGecko API**: API pública gratuita para obtener datos de criptomonedas
+- **Docker**: Contenerización de la aplicación
+- **Nginx**: Servidor web para el contenedor Docker
+
+## 📁 Estructura del Proyecto
+
+```
+CriptoMonedas/
+├── index.html           # Estructura principal de la aplicación
+├── styles.css           # Estilos y diseño responsivo
+├── app.js              # Lógica de la aplicación y consumo de API
+├── service-worker.js   # Service Worker para modo offline
+├── manifest.json       # Manifest para PWA
+├── Dockerfile          # Configuración de Docker
+├── docker-compose.yml  # Configuración de Docker Compose
+├── .gitignore         # Archivos ignorados por Git
+├── LICENSE            # Licencia del proyecto
+└── README.md          # Este archivo
+```
+
+## 🌐 API de CoinGecko
+
+Esta aplicación utiliza la [API pública de CoinGecko](https://www.coingecko.com/api/documentation) para obtener datos de criptomonedas en tiempo real.
+
+**Endpoint utilizado**:
+```
+https://api.coingecko.com/api/v3/coins/markets
+```
+
+**Parámetros**:
+- `vs_currency`: USD
+- `ids`: Lista de criptomonedas a consultar
+- `order`: Ordenado por capitalización de mercado
+- `sparkline`: false
+- `price_change_percentage`: 24h, 7d
+
+**Nota**: La API gratuita de CoinGecko tiene límites de tasa. Para uso en producción, considera registrarte para obtener una API key.
+
+## 🔒 Modo Offline
+
+La aplicación incluye un Service Worker que:
+
+- Cachea los archivos estáticos (HTML, CSS, JS)
+- Guarda las últimas respuestas de la API
+- Permite que la aplicación funcione sin conexión a Internet
+- Utiliza estrategia "Network First" para datos de API
+- Utiliza estrategia "Cache First" para assets estáticos
+
+## 📱 Progressive Web App (PWA)
+
+La aplicación está configurada como PWA, lo que permite:
+
+- Instalación en dispositivos móviles y escritorio
+- Funcionalidad offline completa
+- Icono en la pantalla de inicio
+- Experiencia similar a una aplicación nativa
+
+## 🎨 Personalización
+
+### Cambiar las criptomonedas mostradas
+
+Edita el archivo `app.js` y modifica el array `CRYPTO_IDS`:
+
+```javascript
+const CONFIG = {
+    CRYPTO_IDS: ['bitcoin', 'ethereum', 'cardano', 'binancecoin', 'solana', 'ripple'],
+    // ... resto de la configuración
+};
+```
+
+### Cambiar el intervalo de actualización
+
+Modifica `REFRESH_INTERVAL` en `app.js` (valor en milisegundos):
+
+```javascript
+const CONFIG = {
+    REFRESH_INTERVAL: 60000, // 1 minuto = 60000 ms
+    // ... resto de la configuración
+};
+```
+
+### Cambiar la moneda
+
+Modifica `CURRENCY` en `app.js`:
+
+```javascript
+const CONFIG = {
+    CURRENCY: 'usd', // Cambiar a 'eur', 'gbp', etc.
+    // ... resto de la configuración
+};
+```
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Por favor:
+
+1. Haz fork del repositorio
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 👤 Autor
+
+Carlos Guaman
+
+## 🙏 Agradecimientos
+
+- [CoinGecko](https://www.coingecko.com/) por proporcionar la API gratuita de criptomonedas
+- Comunidad de desarrolladores por las herramientas y recursos utilizados
+
+## 📞 Soporte
+
+Si tienes alguna pregunta o problema, por favor abre un issue en el repositorio de GitHub.
 
 ---
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/communicate-using-markdown) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
-
-&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
-</footer>
+**Nota**: Esta es una aplicación educativa. Los datos de criptomonedas se proporcionan "tal cual" y no deben utilizarse como asesoramiento financiero.

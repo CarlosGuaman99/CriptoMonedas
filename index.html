@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicación de seguimiento de criptomonedas en tiempo real">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Crypto Tracker - Seguimiento de Criptomonedas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🪙 Crypto Tracker</h1>
+            <p class="subtitle">Seguimiento de criptomonedas en tiempo real</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="controls">
+            <button id="refresh-btn" class="btn btn-primary">
+                🔄 Actualizar Precios
+            </button>
+            <div class="status">
+                <span id="status-indicator" class="status-online">●</span>
+                <span id="status-text">En línea</span>
+            </div>
+        </section>
+
+        <section id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Cargando datos de criptomonedas...</p>
+        </section>
+
+        <section id="error" class="error" style="display: none;">
+            <p>⚠️ Error al cargar los datos. Por favor, intenta nuevamente.</p>
+        </section>
+
+        <section id="crypto-grid" class="crypto-grid">
+            <!-- Las tarjetas de criptomonedas se cargarán aquí dinámicamente -->
+        </section>
+
+        <section class="info">
+            <p>Datos proporcionados por <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko API</a></p>
+            <p class="last-update">Última actualización: <span id="last-update-time">-</span></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Crypto Tracker. Proyecto educativo de seguimiento de criptomonedas.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
