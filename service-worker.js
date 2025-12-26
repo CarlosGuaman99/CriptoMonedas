@@ -45,7 +45,7 @@ self.addEventListener('fetch', (event) => {
     const url = new URL(request.url);
     
     // Estrategia: Network First para API, Cache First para assets
-    if (url.origin.includes('coingecko.com')) {
+    if (url.hostname === 'api.coingecko.com' || url.hostname.endsWith('.coingecko.com')) {
         // Network First para datos de API
         event.respondWith(
             fetch(request)
